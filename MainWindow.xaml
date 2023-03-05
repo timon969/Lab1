@@ -7,7 +7,7 @@
         xmlns:tools="clr-namespace:KMA.ProgramingInCSharp.Lab1.Tools.Controls"
         xmlns:lab1="clr-namespace:KMA.ProgramingInCSharp.Lab1.Views"
         mc:Ignorable="d"
-        Title="MainWindow" Height="300" Width="300">
+        Title="MainWindow" Height="300" Width="300" MinHeight="280" MinWidth="260">
     <Grid>
 
         <lab1:CalculateAgeView></lab1:CalculateAgeView>
