@@ -8,4 +8,8 @@
     <RootNamespace>KMA.ProgramingInCSharp.Lab1</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="FontAwesome.WPF" Version="4.7.0.9" />
+  </ItemGroup>
+
 </Project>

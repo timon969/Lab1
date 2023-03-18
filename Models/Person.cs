@@ -5,11 +5,43 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-
 namespace KMA.ProgramingInCSharp.Lab1.Models
 {
-    internal class User
+    public enum WesternZodiacSigns
     {
+        Aries,
+        Taurus,
+        Gemini,
+        Cancer,
+        Leo,
+        Virgo,
+        Libra,
+        Scorpio,
+        Sagittarius,
+        Capricorn,
+        Aquarius,
+        Pisces,
+    }
+
+    public enum ChineseZodiacSigns
+    {
+        Rat,
+        Ox,
+        Tiger,
+        Rabbit,
+        Dragon,
+        Snake,
+        Horse,
+        Ram,
+        Monkey,
+        Rooster,
+        Dog,
+        Pig,
+    }
+
+    internal class Person
+    {
+
         private string _firstName;
         private string _lastName;
         private DateTime _birthday;
@@ -37,14 +69,14 @@ namespace KMA.ProgramingInCSharp.Lab1.Models
             get { return _birthday; }
             set { _birthday = value; }
         }
-
+       
 
 
         public int Age
         {
             get
             {
-                Thread.Sleep(3000);
+               // Thread.Sleep(3000);
                 return (_birthday.DayOfYear <= DateTime.Now.DayOfYear) ? DateTime.Now.Year - _birthday.Year : DateTime.Now.Year - _birthday.Year - 1;
             }
         }
@@ -78,7 +110,7 @@ namespace KMA.ProgramingInCSharp.Lab1.Models
         {
             get
             {
-
+                
                 return Age >= 18;
             }
         }
@@ -90,27 +122,65 @@ namespace KMA.ProgramingInCSharp.Lab1.Models
                 return !((_birthday > DateTime.Now) || (Age > 135));
             }
         }
-
-
-
-
+        
         #endregion
+
+        public Person(string firstName, string lastName, string email, DateTime birthday)
+        {
+            Birthday = birthday;
+            Thread.Sleep(3000);
+            if (IsCorrect)
+            {
+                FirstName = firstName;
+                LastName = lastName;
+                Email = email;
+                
+            }
+            
+        }
+        public Person(string firstName, string lastName, DateTime birthday)
+        {
+            Birthday = birthday;
+            if (IsCorrect)
+            {
+                FirstName = firstName;
+                LastName = lastName;
+                Email = $"{firstName}.{lastName}@gmail.com";
+                
+            }
+            
+        }
+
+        public Person(string firstName, string lastName, String email)
+        {
+
+            if (IsCorrect)
+            {
+                FirstName = firstName;
+                LastName = lastName;
+                Email = email;
+                Birthday = DateTime.Now;
+            }
+
+        }
 
         private WesternZodiacSigns CalculateWesternZodiac()
         {
-            var dayOfYear = Birthday.DayOfYear;
+            //Thread.Sleep(3000);
 
-            if (Birthday.Year%4 == 0 && Birthday.Month >= 3)
+            var dayOfYear = _birthday.DayOfYear;
+
+            if (_birthday.Year%4 == 0 && _birthday.Month >= 3)
             {
                 dayOfYear--;
             }
 
-            
+
             if (dayOfYear >= new DateTime(1901, 3, 21).DayOfYear && dayOfYear <= new DateTime(1901, 4, 19).DayOfYear)
             {
                 return WesternZodiacSigns.Aries;
             }
-            else if(dayOfYear >= new DateTime(1901, 4, 20).DayOfYear && dayOfYear <= new DateTime(1901, 5, 20).DayOfYear)
+            else if (dayOfYear >= new DateTime(1901, 4, 20).DayOfYear && dayOfYear <= new DateTime(1901, 5, 20).DayOfYear)
             {
                 return WesternZodiacSigns.Taurus;
             }
@@ -118,12 +188,12 @@ namespace KMA.ProgramingInCSharp.Lab1.Models
             {
                 return WesternZodiacSigns.Gemini;
             }
-            else if (dayOfYear >= new DateTime(1901, 6, 23).DayOfYear && dayOfYear <= new DateTime(1901, 7,22).DayOfYear)
+            else if (dayOfYear >= new DateTime(1901, 6, 23).DayOfYear && dayOfYear <= new DateTime(1901, 7, 22).DayOfYear)
             {
                 return WesternZodiacSigns.Cancer;
 
             }
-            else if (dayOfYear >= new DateTime(1901, 7, 23).DayOfYear && dayOfYear <= new DateTime(1901, 8,22).DayOfYear)
+            else if (dayOfYear >= new DateTime(1901, 7, 23).DayOfYear && dayOfYear <= new DateTime(1901, 8, 22).DayOfYear)
             {
                 return WesternZodiacSigns.Leo;
             }
@@ -135,7 +205,7 @@ namespace KMA.ProgramingInCSharp.Lab1.Models
             {
                 return WesternZodiacSigns.Libra;
             }
-            else if (dayOfYear >= new DateTime(1901, 10, 24).DayOfYear && dayOfYear <= new DateTime(1901, 11, 21 ).DayOfYear)
+            else if (dayOfYear >= new DateTime(1901, 10, 24).DayOfYear && dayOfYear <= new DateTime(1901, 11, 21).DayOfYear)
             {
                 return WesternZodiacSigns.Scorpio;
             }
@@ -162,19 +232,21 @@ namespace KMA.ProgramingInCSharp.Lab1.Models
 
         private ChineseZodiacSigns CalculateChenesZodiac()
         {
-            var dayOfYear = Birthday.DayOfYear;
+           
 
-            if (Birthday.Year%4 == 0 && Birthday.Month >= 3)
+            var dayOfYear = _birthday.DayOfYear;
+
+            if (_birthday.Year%4 == 0 && _birthday.Month >= 3)
             {
                 dayOfYear--;
             }
 
 
-            if ( (dayOfYear >=new DateTime(1901, 12, 6).DayOfYear  &&  dayOfYear <= 365)  || dayOfYear <= new DateTime(DateTime.Now.Year , DateTime.Now.Month, (Int32) 05).DayOfYear)
+            if ((dayOfYear >=new DateTime(1901, 12, 6).DayOfYear  &&  dayOfYear <= 365)  || dayOfYear <= new DateTime(DateTime.Now.Year, DateTime.Now.Month, (Int32)05).DayOfYear)
             {
                 return ChineseZodiacSigns.Rat;
             }
-            else if (dayOfYear >= new DateTime(1901, 1, 6).DayOfYear && dayOfYear <= new DateTime(1901, 2,3).DayOfYear)
+            else if (dayOfYear >= new DateTime(1901, 1, 6).DayOfYear && dayOfYear <= new DateTime(1901, 2, 3).DayOfYear)
             {
                 return ChineseZodiacSigns.Ox;
             }
@@ -222,7 +294,7 @@ namespace KMA.ProgramingInCSharp.Lab1.Models
 
 
         }
+
     }
 
-    
 }

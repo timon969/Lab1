@@ -3,14 +3,20 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        
         xmlns:local="clr-namespace:KMA.ProgramingInCSharp.Lab1"
         xmlns:tools="clr-namespace:KMA.ProgramingInCSharp.Lab1.Tools.Controls"
         xmlns:lab1="clr-namespace:KMA.ProgramingInCSharp.Lab1.Views"
         mc:Ignorable="d"
-        Title="MainWindow" Height="300" Width="300" MinHeight="280" MinWidth="260">
+        Title="MainWindow" Height="460" Width="300" MinHeight="460" MinWidth="300">
+    
+
+    
     <Grid>
+        
 
         <lab1:CalculateAgeView></lab1:CalculateAgeView>
+        
         
     </Grid>
 

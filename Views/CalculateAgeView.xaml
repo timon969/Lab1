@@ -5,26 +5,54 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:KMA.ProgramingInCSharp.Lab1.Views"
              xmlns:tools="clr-namespace:KMA.ProgramingInCSharp.Lab1.Tools.Controls"
+             xmlns:fa="http://schemas.fontawesome.io/icons/"
+             
              mc:Ignorable="d" 
-             d:DesignHeight="200" d:DesignWidth="300">
+             d:DesignHeight="460" d:DesignWidth="300">
+
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"></RowDefinition>
-            <RowDefinition Height="Auto"></RowDefinition>
-            <RowDefinition Height="Auto"></RowDefinition>
-            <RowDefinition Height="Auto"></RowDefinition>
-        </Grid.RowDefinitions>
+        <Grid IsEnabled="{Binding IsEnable, Mode=OneWay}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
 
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition></ColumnDefinition>
-            
-        </Grid.ColumnDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
 
-        <tools:ChooseBirthday x:Name="BirthdayInformation"  Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" DateChanged="ChooseBirthday_DateChanged" ></tools:ChooseBirthday>
-        <TextBlock Name="Age"  Grid.Row="1" Grid.Column="0" Margin="8,30,0,0" Foreground="Gray"></TextBlock>
-        <TextBlock Name="WesternZodiac" Grid.Row="2" Grid.Column="0" Margin="8,30,0,0" Foreground="Gray"></TextBlock>
-        <TextBlock Name="ChineseZodiac" Grid.Row="3" Grid.Column="0" Margin="8,30,0,0" Foreground="Gray"></TextBlock>
-        
-            
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+
+            </Grid.ColumnDefinitions>
+
+            <tools:TextBoxWithCaption x:Name="TbFirstName" Grid.Row="0" Grid.Column="0" Caption="First Name" Text="{Binding FirstName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></tools:TextBoxWithCaption>
+            <tools:TextBoxWithCaption x:Name="TbLastName" Grid.Row="1" Grid.Column="0" Caption="Last Name" Text="{Binding LastName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></tools:TextBoxWithCaption>
+            <tools:TextBoxWithCaption x:Name="TbEmail" Grid.Row="2" Grid.Column="0" Caption="Email" Text="{Binding Email, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></tools:TextBoxWithCaption>
+            <tools:ChooseBirthday x:Name="BirthdayInformation"  Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"  DateChanged="ChooseBirthday_DateChanged"></tools:ChooseBirthday>
+
+            <TextBlock Name="FirstName"  Grid.Row="4" Grid.Column="0" Margin="8,20,0,0" Foreground="Gray" Text="{Binding Path=FirstName, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" Visibility="{Binding IsVisibile, Mode=OneWay}"></TextBlock>
+            <TextBlock Name="LastName"  Grid.Row="5" Grid.Column="0" Margin="8,5,0,0" Foreground="Gray" Text="{Binding LastName, Mode=OneWay}" Visibility="{Binding IsVisibile, Mode=OneWay}"></TextBlock>
+            <TextBlock Name="Birthday"  Grid.Row="6" Grid.Column="0" Margin="8,5,0,0" Foreground="Gray" Text="{Binding BirsthdayToString, Mode=OneWay}" Visibility="{Binding IsVisibile, Mode=OneWay}"></TextBlock>
+            <TextBlock Name="Email"  Grid.Row="7" Grid.Column="0" Margin="8,5,0,0" Foreground="Gray" Text="{Binding Email, Mode=OneWay}" Visibility="{Binding IsVisibile, Mode=OneWay}"></TextBlock>
+
+            <TextBlock Name="WesternZodiac" Grid.Row="8" Grid.Column="0" Margin="8,5,0,0" Foreground="Gray"  Text="{Binding WesternZodiacSignsToString, Mode=OneWay}" Visibility="{Binding IsVisibile, Mode=OneWay}"></TextBlock>
+            <TextBlock Name="ChineseZodiac" Grid.Row="9" Grid.Column="0" Margin="8,5,0,0" Foreground="Gray" Text="{Binding ChineseZodiacSignsToString, Mode=OneWay}" Visibility="{Binding IsVisibile, Mode=OneWay}"></TextBlock>
+            <TextBlock Name="IsAdult"  Grid.Row="10" Grid.Column="0" Margin="8,5,0,0" Foreground="Gray" Text="{Binding IsAdultToString, Mode=OneWay}" Visibility="{Binding IsVisibile, Mode=OneWay}"></TextBlock>
+            <TextBlock Name="IsBirthday"  Grid.Row="11" Grid.Column="0" Margin="8,5,0,0" Foreground="Gray" Text="{Binding IsBirsthdayToString, Mode=OneWay}" Visibility="{Binding IsVisibile, Mode=OneWay}"></TextBlock>
+
+            <Button Name="BSignUp" Grid.Row="12" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="5" Content="Proceed" Height=" 25" Command="{Binding ProceedCommand}"></Button>
+        </Grid>
+        <fa:ImageAwesome Icon="Refresh" Spin="true" Height="50" Width="50" Visibility="{Binding LoaderVisibility, Mode=OneWay}"></fa:ImageAwesome>
     </Grid>
+    
 </UserControl>

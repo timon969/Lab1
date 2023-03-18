@@ -21,9 +21,7 @@ namespace KMA.ProgramingInCSharp.Lab1.Tools.Controls
     public partial class ChooseBirthday : UserControl
     {
         public event Action<object, RoutedEventArgs> DateChanged;
-
-        
-        
+                
             
         
 

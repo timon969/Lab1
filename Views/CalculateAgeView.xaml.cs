@@ -36,31 +36,31 @@ namespace KMA.ProgramingInCSharp.Lab1.Views
 
             _viewModel.Birthday = BirthdayInformation.Birthday;
 
-            if (!_viewModel.IsCorrect)
-            {
-                MessageBox.Show("The age is incorrect");
-                Age.Text = "";
-                WesternZodiac.Text = "";
-                ChineseZodiac.Text = "";
-                
-            }
-            else
-            {
-                Age.Text = $"Age - {_viewModel.Age}";
-                WesternZodiac.Text = $"In Western astrological system: {_viewModel.WesternZodiacSigns}";
-                ChineseZodiac.Text = $"In Estern astrological system: {_viewModel.ChineseZodiacSigns}";
+            //if (!_viewModel.IsCorrect)
+            //{
+            //    MessageBox.Show("The age is incorrect");
+            //    // Age.Text = "";
+            //    WesternZodiac.Text = "";
+            //    ChineseZodiac.Text = "";
 
-            }
+            //}
+            //else
+            //{
+            //    // Age.Text = $"Age - {_viewModel.Age}";
+            //    WesternZodiac.Text = $"In Western astrological system: {_viewModel.WesternZodiacSigns}";
+            //    ChineseZodiac.Text = $"In Estern astrological system: {_viewModel.ChineseZodiacSigns}";
 
-            if (_viewModel.IsBirthday)
-            {
-                MessageBox.Show("Happy birthday");
-            }
+            //}
+
+            //if (_viewModel.IsBirthday)
+            //{
+            //    MessageBox.Show("Happy birthday");
+            //}
 
 
 
         }
 
-       
+
     }
 }
